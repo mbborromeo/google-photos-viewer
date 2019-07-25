@@ -33,13 +33,14 @@ This will create a production version of the site to the `/build` directory
 
 ## Git Source Management
 
+```bash
 git init
 git status
 git add .
 git commit -am "your message"
 git remote add origin git@____
 git push -u origin master
-
+```
 
 ## Testing
 
