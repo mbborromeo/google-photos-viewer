@@ -31,6 +31,15 @@ npm build
 This will create a production version of the site to the `/build` directory
 
 
+## Git Source Management
+
+git init
+git status
+git add .
+git commit -am "your message"
+git remote add origin git@____
+git push
+
 
 ## Testing
 
@@ -39,4 +48,4 @@ This will create a production version of the site to the `/build` directory
 
 
 
-## Apendix
+## Appendix
