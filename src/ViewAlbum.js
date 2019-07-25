@@ -5,7 +5,7 @@ function ViewAlbum( props ) {
   const albumID = props.match.params.id;
 
   return <div>
-    Album { albumID }
+    Album number { albumID }
     <br />
     <Link to="/">Back</Link>
   </div>;
