@@ -38,7 +38,7 @@ git status
 git add .
 git commit -am "your message"
 git remote add origin git@____
-git push
+git push -u origin master
 
 
 ## Testing
