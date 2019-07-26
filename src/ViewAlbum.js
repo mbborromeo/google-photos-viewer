@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-function ViewAlbum( props ) {
+function ViewAlbum( props ) {  
   const albumID = props.match.params.id;
 
   return <div>
