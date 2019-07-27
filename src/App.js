@@ -5,8 +5,7 @@ import AlbumsList from './AlbumsList';
 import ViewAlbum from './ViewAlbum';
 import About from './About';
 import HeaderBar from './HeaderBar';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import { HashRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -23,8 +22,5 @@ function App() {
     </div>
   );  
 }
-
-
-
 
 export default App;
