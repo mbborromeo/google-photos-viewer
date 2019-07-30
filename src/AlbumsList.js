@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import GooglePhotosService from './GooglePhotosService';
+
+const service = new GooglePhotosService();
 
 function AlbumsList() {
+  const [ albums, setAlbums ] = useState( [] );
+  const [ isLoading, setIsLoading ] = useState(true);
+
+  useEffect( function(){
+      console.log("promise inside");
+      const promise = service.loadAlbums();
+      promise.then( function(arg){
+        console.log("promise finished", arg);
+        setAlbums(arg);
+        setIsLoading(false);
+      });
+    }, 
+    [] 
+  );
+
+  console.log('isLoading', isLoading);
+  console.log('albums', albums);
+
+  const newAlbums = albums.map( function(obj) {
+    //console.log('obj', obj);
+    return <div key={ obj.id }>
+      <Link to={ "/album/" + obj.id }>{ obj.title }</Link><br />
+    </div>;
+  });
+
+
+  console.log('newAlbums', newAlbums);
+
   return <div>
-    <Link to="/album/1">Album 1</Link><br />
-    <Link to="/album/2">Album 2</Link>
+    { newAlbums }
+    {
+      isLoading ? "Loading" : "Not loading"
+    }
   </div>;
 
 }
