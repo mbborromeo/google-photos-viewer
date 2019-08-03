@@ -10,6 +10,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
+    "format": "standard --fix",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -29,5 +30,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "standard": "^13.1.0"
   }
 }

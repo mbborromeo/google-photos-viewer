@@ -1,24 +1,22 @@
 /* global gapi */
-import React, { useEffect, useCallback, useState } from 'react';
-import logo from './logo.svg';
-import './App.scss';
-import AlbumsList from './AlbumsList';
-import ViewAlbum from './ViewAlbum';
-import ViewPhoto from './ViewPhoto';
-import About from './About';
-import HeaderBar from './HeaderBar';
-import { HashRouter as Router, Route } from "react-router-dom";
-import PhotoServiceContext from './PhotoServiceContext';
-//import DummyGooglePhotosService from './DummyGooglePhotosService';
-import GooglePhotosService from './GooglePhotosService';
+import React, { useEffect, useCallback, useState } from 'react'
+import './App.scss'
+import AlbumsList from './AlbumsList'
+import ViewAlbum from './ViewAlbum'
+import ViewPhoto from './ViewPhoto'
+import About from './About'
+import HeaderBar from './HeaderBar'
+import { HashRouter as Router, Route } from 'react-router-dom'
+import PhotoServiceContext from './PhotoServiceContext'
+// import DummyGooglePhotosService from './DummyGooglePhotosService';
+import GooglePhotosService from './GooglePhotosService'
 
-const SCOPE = 'https://www.googleapis.com/auth/photoslibrary.readonly';
+const SCOPE = 'https://www.googleapis.com/auth/photoslibrary.readonly'
 
-function App(props) {
-
-  const [initialising, setInitialising] = useState(true);
-  const [isAuthorised, setIsAuthorised] = useState(false);
-  const [photoService, setPhotoService] = useState(undefined);
+function App (props) {
+  const [initialising, setInitialising] = useState(true)
+  const [isAuthorised, setIsAuthorised] = useState(false)
+  const [photoService, setPhotoService] = useState(undefined)
 
   useEffect(
     () => {
@@ -35,33 +33,33 @@ function App(props) {
           clearInterval(intervalId)
           gapi.load('client:auth2', () => {
             console.log('auth2 is loaded')
-            gapi.client.init({              
-              'discoveryDocs': ['https://photoslibrary.googleapis.com/$discovery/rest?version=v1'],
-              'clientId': props.gapiID,
-              'scope': SCOPE
+            gapi.client.init({
+              discoveryDocs: ['https://photoslibrary.googleapis.com/$discovery/rest?version=v1'],
+              clientId: props.gapiID,
+              scope: SCOPE
             }).then(function () {
               console.log('we\'re initialised')
-              setInitialising(false);
+              setInitialising(false)
 
-              const auth = gapi.auth2.getAuthInstance();
+              const auth = gapi.auth2.getAuthInstance()
               auth.isSignedIn.listen(() => {
                 console.log('signed in status changed')
                 setIsAuthorised(user.hasGrantedScopes(SCOPE))
-              });
+              })
 
-              const user = auth.currentUser.get();
-              const startAuth = user.hasGrantedScopes(SCOPE);
-              console.log('has photos library permission?', startAuth);
-              setPhotoService(new GooglePhotosService(gapi.client));
-              setIsAuthorised(startAuth);
-              
+              const user = auth.currentUser.get()
+              const startAuth = user.hasGrantedScopes(SCOPE)
+              console.log('has photos library permission?', startAuth)
+              setPhotoService(new GooglePhotosService(gapi.client))
+              setIsAuthorised(startAuth)
+
               // gapi.client.photoslibrary.albums.list({})
               //   .then(function(response) {
               //     // Handle the results here (response.result has the parsed body).
               //     console.log("Album Response", response);
               //   });
             })
-          });
+          })
         },
         100
       )
@@ -71,14 +69,14 @@ function App(props) {
 
   const onSignOut = useCallback(
     () => {
-      gapi.auth2.getAuthInstance().signOut();
+      gapi.auth2.getAuthInstance().signOut()
     },
     []
   )
 
   const onSignIn = useCallback(
     () => {
-      gapi.auth2.getAuthInstance().signIn();
+      gapi.auth2.getAuthInstance().signIn()
     },
     []
   )
@@ -91,25 +89,24 @@ function App(props) {
     return <button onClick={onSignIn}>Sign in</button>
   }
 
-
   return (
-    <div className="App">
+    <div className='App'>
       <PhotoServiceContext.Provider value={photoService}>
         <Router>
           <HeaderBar />
 
-          <button onClick={ onSignOut }>Sign Out</button>
+          <button onClick={onSignOut}>Sign Out</button>
 
           <div>
-            <Route path="/" exact component={AlbumsList} />
-            <Route path="/album/:id" component={ViewAlbum} />
-            <Route path="/about" component={About} />
-            <Route path="/photo/:id" component={ViewPhoto} />
+            <Route path='/' exact component={AlbumsList} />
+            <Route path='/album/:id' component={ViewAlbum} />
+            <Route path='/about' component={About} />
+            <Route path='/photo/:id' component={ViewPhoto} />
           </div>
         </Router>
       </PhotoServiceContext.Provider>
     </div>
-  );  
+  )
 }
 
-export default App;
+export default App
