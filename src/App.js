@@ -28,7 +28,7 @@ function App (props) {
             console.log('gapi not loaded yet')
             return
           }
-          console.log('gapi loaded!!')
+          console.log('gapi loaded dsfsd!!')
 
           clearInterval(intervalId)
           gapi.load('client:auth2', () => {
