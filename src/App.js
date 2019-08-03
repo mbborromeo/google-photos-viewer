@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.scss';
 import AlbumsList from './AlbumsList';
 import ViewAlbum from './ViewAlbum';
+import ViewPhoto from './ViewPhoto';
 import About from './About';
 import HeaderBar from './HeaderBar';
 import { HashRouter as Router, Route } from "react-router-dom";
@@ -13,7 +14,7 @@ import GooglePhotosService from './GooglePhotosService';
 
 const SCOPE = 'https://www.googleapis.com/auth/photoslibrary.readonly';
 
-function App() {
+function App(props) {
 
   const [initialising, setInitialising] = useState(true);
   const [isAuthorised, setIsAuthorised] = useState(false);
@@ -34,10 +35,9 @@ function App() {
           clearInterval(intervalId)
           gapi.load('client:auth2', () => {
             console.log('auth2 is loaded')
-            gapi.client.init({
-              'apiKey': 'AIzaSyAwgwcEW14nGd6CwqR-7G5cp2ct_c7qI1Q',
+            gapi.client.init({              
               'discoveryDocs': ['https://photoslibrary.googleapis.com/$discovery/rest?version=v1'],
-              'clientId': '101744662563-frd5q7291nvegithu7pi3i5dcmlp79ra.apps.googleusercontent.com',
+              'clientId': props.gapiID,
               'scope': SCOPE
             }).then(function () {
               console.log('we\'re initialised')
@@ -104,6 +104,7 @@ function App() {
             <Route path="/" exact component={AlbumsList} />
             <Route path="/album/:id" component={ViewAlbum} />
             <Route path="/about" component={About} />
+            <Route path="/photo/:id" component={ViewPhoto} />
           </div>
         </Router>
       </PhotoServiceContext.Provider>

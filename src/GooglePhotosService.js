@@ -31,7 +31,7 @@ class GooglePhotosService {
           .mediaItems
           .search({albumId: id})
           .then(function(response) {
-            console.log('medioa searcg done', response)
+            console.log('media search done', response)
             const mediaItems = response.result.mediaItems
 
             return {
@@ -40,6 +40,21 @@ class GooglePhotosService {
             }
           })
       })
+      .catch(function(e) {
+        return undefined
+      })
+  }
+
+  loadPhotoDetail(id) {
+    return this.gapiClient
+      .photoslibrary
+      .mediaItems
+      .get({mediaItemId: id})
+      .then((response) => {
+        console.log('photo gathered')
+        console.log(response);
+        return response.result;
+      })      
       .catch(function(e) {
         return undefined
       })

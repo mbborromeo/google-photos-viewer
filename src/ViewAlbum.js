@@ -39,7 +39,9 @@ function ViewAlbum( props ) {
         <ul>
           {albumDetails.mediaItems.map(function(mediaItem) {
             return <li key={mediaItem.id}>
-              <img src={mediaItem.baseUrl} alt='' />
+              <Link to={ "/photo/" + mediaItem.id }>
+                <img src={mediaItem.baseUrl} alt='' />
+              </Link>
             </li>
           })}
         </ul>
