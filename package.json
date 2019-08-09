@@ -2,13 +2,11 @@
   "name": "photoviewer",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "gh-pages": "2.0.0",
-    "node-sass": "^4.12.0",
+  "homepage": "https://mbborromeo.github.io/google-photos-viewer/",
+  "dependencies": {    
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-router-dom": "^5.0.1"
   },
   "scripts": {
     "format": "standard --fix",
@@ -35,7 +33,9 @@
     ]
   },
   "devDependencies": {
+    "react-scripts": "3.0.1",
+    "node-sass": "^4.12.0",    
+    "gh-pages": "2.0.0",
     "standard": "^13.1.0"
-  },
-  "homepage": "https://mbborromeo.github.io/google-photos-viewer/"
+  }
 }
