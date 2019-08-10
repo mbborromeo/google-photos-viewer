@@ -1,4 +1,4 @@
-# Mike's Google Photo viewer
+# Mike's Google Photo viewer using React
 
 View all your albums from your Google Photos account using Google Photos API
 
@@ -6,7 +6,6 @@ View all your albums from your Google Photos account using Google Photos API
 
 - NodeJS (v10.15.1)
 - NPM (v6.4.1)
-- React (v16.8.6)
 
 ## Setting Up Development Machine
 
@@ -14,11 +13,12 @@ View all your albums from your Google Photos account using Google Photos API
 npm install
 ```
 Copy .env.development.local.sample to .env.development.local and fill it in with your own Google Photos API key.
+Copy .env.production.local.sample to .env.production.local and fill it in with your own Google Photos API key.
 
 ## Running Development Machine
 
 ```bash
-npm run start
+npm start
 ```
 
 This will start a version of the app at:
@@ -40,9 +40,15 @@ This will create a production version of the site to the `/build` directory
 
 ## Deploying to GitHub Pages
 
+In the package.json file, make sure the "homepage" property is set to the correct URL on GitHub pages which should match the nametag of your GitHub repository, "google-photos-viewer".  The homepage is currently set to https://mbborromeo.github.io/google-photos-viewer/.
+
+In your Git Bash terminal or command line, type in:
+
 ```bash
 npm run deploy
 ```
+
+This will deploy a live working version you can view in your browser on GitHub pages.  The link is below.
 
 ## Live Site
 https://mbborromeo.github.io/google-photos-viewer/
