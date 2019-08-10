@@ -18,7 +18,7 @@ Copy .env.development.local.sample to .env.development.local and fill it in with
 ## Running Development Machine
 
 ```bash
-npm start
+npm run start
 ```
 
 This will start a version of the app at:
@@ -33,7 +33,7 @@ npm run format
 ## Deploying to Production
 
 ```bash
-npm build
+npm run build
 ```
 
 This will create a production version of the site to the `/build` directory
