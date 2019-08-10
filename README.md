@@ -27,7 +27,7 @@ http://localhost:3000/
 ## Auto Formatting
 
 ```bash
-npm format
+npm run format
 ```
 
 ## Deploying to Production
@@ -41,7 +41,7 @@ This will create a production version of the site to the `/build` directory
 ## Deploying to GitHub Pages
 
 ```bash
-npm deploy
+npm run deploy
 ```
 
 ## Live Site
