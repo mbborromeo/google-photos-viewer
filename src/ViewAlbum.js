@@ -16,7 +16,6 @@ function ViewAlbum (props) {
     function () {
       const promise = service.loadAlbumDetail(albumID)
       promise.then(function (arg) {
-        console.log('promise finished', arg)
         setAlbumDetails(arg)
         setIsLoading(false)
       })

@@ -21,7 +21,6 @@ class GooglePhotosService {
       .albums
       .get({ albumId: id })
       .then((response) => {
-        console.log('album gathered')
         return response.result
       })
       .then((album) => {
@@ -31,7 +30,6 @@ class GooglePhotosService {
           .mediaItems
           .search({ albumId: id })
           .then(function (response) {
-            console.log('media search done', response)
             const mediaItems = response.result.mediaItems
 
             return {
@@ -51,8 +49,6 @@ class GooglePhotosService {
       .mediaItems
       .get({ mediaItemId: id })
       .then((response) => {
-        console.log('photo gathered')
-        console.log(response)
         return response.result
       })
       .catch(function (e) {

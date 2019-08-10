@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
 
 function ViewPhoto (props) {
-  console.log('props', props)
-
-  console.log('props.match', props.match)
-
-  console.log('props.match.params', props.match.params)
-
   const photoID = props.match.params.id
   const service = useContext(PhotoServiceContext)
 
@@ -17,10 +11,8 @@ function ViewPhoto (props) {
 
   useEffect(
     function () {
-      console.log('photoID', photoID)
       const promise = service.loadPhotoDetail(photoID)
       promise.then(function (arg) {
-        console.log('promise finished', arg)
         setPhotoDetails(arg)
         setIsLoading(false)
       })

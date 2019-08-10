@@ -23,33 +23,26 @@ function App (props) {
       console.log('we\'ve mounted')
       const intervalId = setInterval(
         () => {
-          console.log('is google api loaded?')
           if (!window.gapi) {
-            console.log('gapi not loaded yet')
             return
           }
-          console.log('gapi loaded dsfsd!!')
 
           clearInterval(intervalId)
           gapi.load('client:auth2', () => {
-            console.log('auth2 is loaded')
             gapi.client.init({
               discoveryDocs: ['https://photoslibrary.googleapis.com/$discovery/rest?version=v1'],
               clientId: props.gapiID,
               scope: SCOPE
             }).then(function () {
-              console.log('we\'re initialised')
               setInitialising(false)
 
               const auth = gapi.auth2.getAuthInstance()
               auth.isSignedIn.listen(() => {
-                console.log('signed in status changed')
                 setIsAuthorised(user.hasGrantedScopes(SCOPE))
               })
 
               const user = auth.currentUser.get()
               const startAuth = user.hasGrantedScopes(SCOPE)
-              console.log('has photos library permission?', startAuth)
               setPhotoService(new GooglePhotosService(gapi.client))
               setIsAuthorised(startAuth)
 

@@ -9,7 +9,6 @@ function AlbumsList () {
 
   // useEffect only runs once to get the promise data initially.
   useEffect(function () {
-    // console.log("promise inside");
     const promise = service.loadAlbums()
     promise.then(function (arg) {
       // console.log("promise finished", arg);

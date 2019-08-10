@@ -29,7 +29,6 @@ class DummyGooglePhotosService {
           resolve(
             // find() returns first match of function provided
             testData.find(function (album) {
-              console.log('inside loadAlbumDetail')
               return album.id === id
             })
           )
