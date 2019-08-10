@@ -1,6 +1,6 @@
-# Mike's Google Photo viewer using React
+# React Google Photo viewer
 
-View all your albums from your Google Photos account using Google Photos API
+View all your albums from your Google Photos account - built in React using Google Photos API.
 
 ## Development Dependencies
 
