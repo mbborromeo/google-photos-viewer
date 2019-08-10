@@ -2,7 +2,7 @@
   "name": "photoviewer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mbborromeo.github.io/google-photos-viewer/",
+  "homepage": "https://mbborromeo.github.io/react-google-photos-viewer/",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
