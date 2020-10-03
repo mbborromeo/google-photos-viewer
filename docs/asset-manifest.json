@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/google-photos-viewer/static/css/main.940951a2.chunk.css",
+    "main.css": "/google-photos-viewer/static/css/main.f47948d4.chunk.css",
     "main.js": "/google-photos-viewer/static/js/main.ec72d634.chunk.js",
     "main.js.map": "/google-photos-viewer/static/js/main.ec72d634.chunk.js.map",
     "runtime~main.js": "/google-photos-viewer/static/js/runtime~main.e35f5dcb.js",
@@ -8,8 +8,8 @@
     "static/js/2.86e65e59.chunk.js": "/google-photos-viewer/static/js/2.86e65e59.chunk.js",
     "static/js/2.86e65e59.chunk.js.map": "/google-photos-viewer/static/js/2.86e65e59.chunk.js.map",
     "index.html": "/google-photos-viewer/index.html",
-    "precache-manifest.c2550ed9f62790661000a385a99bfcc3.js": "/google-photos-viewer/precache-manifest.c2550ed9f62790661000a385a99bfcc3.js",
+    "precache-manifest.d20794465c5f7b872db5b8e41dbadb74.js": "/google-photos-viewer/precache-manifest.d20794465c5f7b872db5b8e41dbadb74.js",
     "service-worker.js": "/google-photos-viewer/service-worker.js",
-    "static/css/main.940951a2.chunk.css.map": "/google-photos-viewer/static/css/main.940951a2.chunk.css.map"
+    "static/css/main.f47948d4.chunk.css.map": "/google-photos-viewer/static/css/main.f47948d4.chunk.css.map"
   }
 }
