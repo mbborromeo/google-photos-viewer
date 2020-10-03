@@ -57,8 +57,9 @@ ul {
     img {
       /* max-height: 100%; */
       height: inherit; /* needed for tablet view to keep label on bottom of image */
-      min-width: 100%;
-      width: fit-content; /* needed to keep image ratio on tablet view */
+      /* min-width: 100%;
+      width: fit-content; */ /* needed to keep image ratio on tablet view */
+      width: 100%;
       object-fit: cover;
       vertical-align: bottom;
     }
