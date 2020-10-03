@@ -26,10 +26,8 @@ function AlbumsList () {
   })
 
   return <div>
-    { newAlbums }
-    {
-      isLoading ? 'Loading' : 'Not loading'
-    }
+    { isLoading && 'Loading...' }
+    { newAlbums }    
   </div>
 }
 

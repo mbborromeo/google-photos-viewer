@@ -31,8 +31,8 @@ function ViewAlbum (props) {
   }
 
   return <div>
-    {isLoading && 'Loading...'}
-    {albumDetails &&
+    { isLoading && 'Loading...' }
+    { albumDetails &&
       <div>
         <h2>{albumDetails.title}</h2>
         <ul>
