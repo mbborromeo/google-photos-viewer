@@ -75,7 +75,7 @@ function App (props) {
   )
 
   if (initialising) {
-    return <div>Initing...</div>
+    return <div>Initialising...</div>
   }
 
   if (!isAuthorised) {

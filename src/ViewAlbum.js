@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import './ViewAlbum.scss'
 import { Link } from 'react-router-dom'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
 import PhotoServiceContext from './PhotoServiceContext'
@@ -25,31 +26,37 @@ function ViewAlbum (props) {
 
   // If the service is finished loading the album, but the album doesnt exist
   if (!isLoading && !albumDetails) { // isLoaded && !albumDetails
-    return <div>
-      <h2>Album not found</h2>
-    </div>
+    return (
+      <div>
+        <h2>Album not found</h2>
+      </div>
+    );
   }
 
-  return <div>
-    {isLoading && 'Loading...'}
-    {albumDetails &&
-      <div>
-        <h2>{albumDetails.title}</h2>
-        <ul>
-          {albumDetails.mediaItems.map(function (mediaItem) {
-            return <li key={mediaItem.id}>
-              <Link to={'/photo/' + mediaItem.id}>
-                <img src={mediaItem.baseUrl} alt='' />
-              </Link>
-            </li>
-          })}
-        </ul>
-      </div>
-    }
+  return (
+    <div>
+      { isLoading && 'Loading...' }
+      { albumDetails &&
+        <div>
+          <h2>{albumDetails.title}</h2>
+          <ul>
+            { albumDetails.mediaItems.map( function (mediaItem){
+              return (
+                <li key={mediaItem.id}>
+                  <Link to={'/photo/' + mediaItem.id}>
+                    <img src={mediaItem.baseUrl} alt='' />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      }
 
-    <hr />
-    <Link to='/'>Back to Albums List</Link>
-  </div>
+      <hr />
+      <Link to='/'>Back to Albums List</Link>
+    </div>
+  );
 }
 
 export default ViewAlbum

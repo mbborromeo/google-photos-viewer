@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import './AlbumsList.scss'
 import { Link } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
 
@@ -11,7 +12,6 @@ function AlbumsList () {
   useEffect(function () {
     const promise = service.loadAlbums()
     promise.then(function (arg) {
-      // console.log("promise finished", arg);
       setAlbums(arg)
       setIsLoading(false)
     })
@@ -20,17 +20,32 @@ function AlbumsList () {
   )
 
   const newAlbums = albums.map(function (obj) {
-    return <div key={obj.id}>
-      <Link to={'/album/' + obj.id}>{ obj.title }<img src={obj.coverPhotoBaseUrl} /></Link><br />
-    </div>
+    return (
+      <li key={obj.id}>
+        <Link to={'/album/' + obj.id}>
+          <figure>
+            <img src={obj.coverPhotoBaseUrl} />            
+            <figcaption>
+              { obj.title }
+            </figcaption>
+          </figure>
+        </Link>
+        <br />
+      </li>
+    );
   })
 
-  return <div>
-    { newAlbums }
-    {
-      isLoading ? 'Loading' : 'Not loading'
-    }
-  </div>
+  return (
+    <div>
+      { isLoading && 'Loading...' }
+      <div>
+        <h2>Albums</h2>
+        <ul>
+          { newAlbums }
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export default AlbumsList

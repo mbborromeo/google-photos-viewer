@@ -21,22 +21,29 @@ function ViewPhoto (props) {
   )
 
   if (!isLoading && !photoDetails) {
-    return <div>
-      <h2>Photo not found</h2>
-    </div>
+    return (
+      <div>
+        <h2>Photo not found</h2>
+      </div>
+    );
   }
 
-  return <div>
-    {isLoading && 'Loading...'}
-    {photoDetails &&
-      <div>
-        <img src={photoDetails.baseUrl} />
-      </div>
-    }
+  return (
+    <div>
+      { isLoading && 'Loading...' }
+      { photoDetails &&
+        <div>
+          <h2>Photo</h2>
+          <div>
+            <img src={photoDetails.baseUrl} />
+          </div>
+        </div>
+      }
 
-    <hr />
-    <Link to='/'>Back to Albums List</Link>
-  </div>
+      <hr />
+      <Link to='/'>Back to Albums List</Link>
+    </div>
+  );
 }
 
 export default ViewPhoto
