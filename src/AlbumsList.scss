@@ -17,14 +17,7 @@ ul {
       figure {
         position: relative;
         margin: 0;
-
-        img {
-          max-height: 100%;
-          min-width: 100%;
-          object-fit: cover;
-          vertical-align: bottom;
-        }
-
+        
         figcaption {
           position: absolute;
           width: 100%;
@@ -37,6 +30,13 @@ ul {
           text-align: center;
         }
       }
+    }
+
+    img {
+      max-height: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      vertical-align: bottom;
     }
 
     &:last-child {

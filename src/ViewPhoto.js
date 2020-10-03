@@ -33,7 +33,10 @@ function ViewPhoto (props) {
       { isLoading && 'Loading...' }
       { photoDetails &&
         <div>
-          <img src={photoDetails.baseUrl} />
+          <h2>Photo</h2>
+          <div>
+            <img src={photoDetails.baseUrl} />
+          </div>
         </div>
       }
 

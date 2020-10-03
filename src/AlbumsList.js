@@ -38,9 +38,12 @@ function AlbumsList () {
   return (
     <div>
       { isLoading && 'Loading...' }
-      <ul>
-        { newAlbums }
-      </ul>
+      <div>
+        <h2>Albums</h2>
+        <ul>
+          { newAlbums }
+        </ul>
+      </div>
     </div>
   );
 }
