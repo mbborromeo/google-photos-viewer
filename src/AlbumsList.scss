@@ -82,9 +82,10 @@ ul {
           z-index: 1;
           background-color: white;
           color: black;
-          text-align: center;
-          /* opacity: 0.9; */
-          width: 100%;
+          text-align: center;          
+          /* width: 100%; */
+          max-width: 100%;
+          opacity: 0.9;
 
           h3 {
             margin: 0;
@@ -128,9 +129,8 @@ ul {
       flex-grow: 10;
     }
 
-    @include mobile {
-      flex: 1 1 50%;
-      /* height: auto; preserve aspect ratio */
+    @include tablet {
+      flex: 1 1 50%;      
     }
 
     @include mobile-landscape {
@@ -139,6 +139,7 @@ ul {
     }
 
     @include mobile-portrait {
+      flex: 1 1 50%;
       height: 25vh;
     }
   }
