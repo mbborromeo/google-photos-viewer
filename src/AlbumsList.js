@@ -42,7 +42,7 @@ function AlbumsList () {
       { isLoading && 'Loading...' }
       <div>
         <h2>Albums</h2>
-        <ul>
+        <ul className="albums">
           { newAlbums }
         </ul>
       </div>
