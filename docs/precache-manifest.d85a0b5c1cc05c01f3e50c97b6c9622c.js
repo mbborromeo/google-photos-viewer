@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c3aebd5badc94b1676b67d0ce118ec9c",
+    "revision": "f865ff80b979596d04ba4543e9a97e9a",
     "url": "/google-photos-viewer/index.html"
   },
   {
-    "revision": "a1244c3f9c4a535cb6df",
-    "url": "/google-photos-viewer/static/css/main.82c2770f.chunk.css"
+    "revision": "e3f8db3dcd7283d8fc74",
+    "url": "/google-photos-viewer/static/css/main.846df8d6.chunk.css"
   },
   {
     "revision": "36f651c9c3a79a039c34",
     "url": "/google-photos-viewer/static/js/2.86e65e59.chunk.js"
   },
   {
-    "revision": "a1244c3f9c4a535cb6df",
+    "revision": "e3f8db3dcd7283d8fc74",
     "url": "/google-photos-viewer/static/js/main.353bcccd.chunk.js"
   },
   {

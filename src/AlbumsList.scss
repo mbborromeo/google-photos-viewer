@@ -39,6 +39,12 @@ $tablet-width: 1024px;
   }
 }
 
+@mixin tablet-wide-portrait {
+  @media (max-width: $tablet-width) and (orientation: portrait) {
+    @content; // inserts content from where this is called     
+  }
+}
+
 /* Source: https://css-tricks.com/adaptive-photo-layout-with-flexbox */
 ul {
   list-style-type: none;
@@ -129,18 +135,14 @@ ul {
       flex-grow: 10;
     }
 
-    @include tablet {
-      flex: 1 1 50%;      
+    @include tablet-wide-portrait {
+      flex: 1 1 50%;
+      height: 25vh;   
     }
 
     @include mobile-landscape {
       flex: 1 1 30%;
       height: 40vh;
-    }
-
-    @include mobile-portrait {
-      flex: 1 1 50%;
-      height: 25vh;
     }
   }
 }
