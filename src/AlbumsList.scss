@@ -54,6 +54,7 @@ ul {
   flex-wrap: wrap;
   
   li {
+    border: 3px solid white;
     height: 30vh;
     flex: 1 1 auto;
     overflow: hidden;
@@ -89,8 +90,8 @@ ul {
           background-color: white;
           color: black;
           text-align: center;          
-          /* width: 100%; */
-          max-width: 100%;
+          width: 100%;
+          /* max-width: 100%; */
           opacity: 0.9;
 
           h3 {
@@ -136,7 +137,7 @@ ul {
     }
 
     @include tablet-wide-portrait {
-      flex: 1 1 50%;
+      flex: 1 1 45%;
       height: 25vh;   
     }
 
