@@ -44,7 +44,9 @@ function ViewAlbum (props) {
               return (
                 <li key={mediaItem.id}>
                   <Link to={'/photo/' + mediaItem.id}>
-                    <img src={mediaItem.baseUrl} alt='' />
+                    <figure>
+                      <img src={mediaItem.baseUrl} alt='' />
+                    </figure>
                   </Link>
                 </li>
               );
