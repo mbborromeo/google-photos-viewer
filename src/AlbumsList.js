@@ -26,7 +26,9 @@ function AlbumsList () {
           <figure>
             <img src={obj.coverPhotoBaseUrl} />            
             <figcaption>
-              { obj.title }
+              <h3>
+                { obj.title }
+              </h3>
             </figcaption>
           </figure>
         </Link>
