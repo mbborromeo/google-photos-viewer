@@ -41,13 +41,15 @@ function AlbumsList () {
   return (
     <div>
       { isLoading && 'Loading...' }
-      <div>
-        <HeaderBreadcrumb />
-        
-        <ul className="albums">
-          { newAlbums }
-        </ul>
-      </div>
+      { albums.length > 0 &&
+        <div>
+          <HeaderBreadcrumb />
+          
+          <ul className="albums">
+            { newAlbums }
+          </ul>
+        </div>
+      }
 
       <hr />
       <Link to='/'>Back to Albums List</Link>

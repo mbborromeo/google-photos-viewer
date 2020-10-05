@@ -39,7 +39,6 @@ function ViewAlbum (props) {
       { isLoading && 'Loading...' }
       { albumDetails &&
         <div>
-          { /* console.log('ViewAlbum albumDetails', albumDetails) */ }
           <HeaderBreadcrumb albumDetails={ albumDetails } />
           
           <ul>
