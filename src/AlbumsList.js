@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import './AlbumsList.scss'
 import { Link } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
+import HeaderBar from './HeaderBar'
 
 function AlbumsList () {
   const service = useContext(PhotoServiceContext) // new GooglePhotosService();
@@ -19,7 +20,7 @@ function AlbumsList () {
   []
   )
 
-  const newAlbums = albums.map(function (obj) {
+  const newAlbums = albums.map( function (obj){
     return (
       <li key={obj.id}>
         <Link to={'/album/' + obj.id}>
@@ -41,7 +42,8 @@ function AlbumsList () {
     <div>
       { isLoading && 'Loading...' }
       <div>
-        <h2>Albums</h2>
+        <HeaderBar />
+        
         <ul className="albums">
           { newAlbums }
         </ul>

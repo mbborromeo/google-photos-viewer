@@ -3,9 +3,10 @@ import './ViewAlbum.scss'
 import { Link } from 'react-router-dom'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
 import PhotoServiceContext from './PhotoServiceContext'
+import HeaderBar from './HeaderBar'
 
 function ViewAlbum (props) {
-  const albumID = props.match.params.id
+  const albumID = props.match.params.aid
 
   // const service = new DummyGooglePhotosService();
   const service = useContext(PhotoServiceContext)
@@ -38,12 +39,14 @@ function ViewAlbum (props) {
       { isLoading && 'Loading...' }
       { albumDetails &&
         <div>
-          <h2>{albumDetails.title}</h2>
+          { console.log('ViewAlbum albumDetails', albumDetails) }
+          <HeaderBar albumDetails={ albumDetails } />
+          
           <ul>
             { albumDetails.mediaItems.map( function (mediaItem){
               return (
                 <li key={mediaItem.id}>
-                  <Link to={'/photo/' + mediaItem.id}>
+                  <Link to={'/photo/' + mediaItem.id + '/' + albumID + '/' + albumDetails.title }>
                     <figure>
                       <img src={mediaItem.baseUrl} alt='' />
                     </figure>

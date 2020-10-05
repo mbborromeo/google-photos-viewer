@@ -5,7 +5,6 @@ import AlbumsList from './AlbumsList'
 import ViewAlbum from './ViewAlbum'
 import ViewPhoto from './ViewPhoto'
 import About from './About'
-import HeaderBar from './HeaderBar'
 import { HashRouter as Router, Route } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
@@ -21,6 +20,7 @@ function App (props) {
   useEffect(
     () => {
       console.log('we\'ve mounted')
+      
       const intervalId = setInterval(
         () => {
           if (!window.gapi) {
@@ -86,15 +86,13 @@ function App (props) {
     <div className='App'>
       <PhotoServiceContext.Provider value={photoService}>
         <Router>
-          <HeaderBar />
-
           <button onClick={onSignOut}>Sign Out</button>
 
           <div>
             <Route path='/' exact component={AlbumsList} />
-            <Route path='/album/:id' component={ViewAlbum} />
+            <Route path='/album/:aid' component={ViewAlbum} />
             <Route path='/about' component={About} />
-            <Route path='/photo/:id' component={ViewPhoto} />
+            <Route path='/photo/:pid/:aid/:atitle' component={ViewPhoto} />
           </div>
         </Router>
       </PhotoServiceContext.Provider>
