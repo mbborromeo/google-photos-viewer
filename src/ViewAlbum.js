@@ -3,7 +3,7 @@ import './ViewAlbum.scss'
 import { Link } from 'react-router-dom'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
 import PhotoServiceContext from './PhotoServiceContext'
-import HeaderBar from './HeaderBar'
+import HeaderBreadcrumb from './HeaderBreadcrumb'
 
 function ViewAlbum (props) {
   const albumID = props.match.params.aid
@@ -40,7 +40,7 @@ function ViewAlbum (props) {
       { albumDetails &&
         <div>
           { console.log('ViewAlbum albumDetails', albumDetails) }
-          <HeaderBar albumDetails={ albumDetails } />
+          <HeaderBreadcrumb albumDetails={ albumDetails } />
           
           <ul>
             { albumDetails.mediaItems.map( function (mediaItem){

@@ -1,8 +1,8 @@
 import React from 'react'
-import './HeaderBar.scss'
+import './HeaderBreadcrumb.scss'
 import { Link } from 'react-router-dom'
 
-function HeaderBar (props) {
+function HeaderBreadcrumb (props) {
   return (
     <div className="header">
         <h2>
@@ -36,4 +36,4 @@ function HeaderBar (props) {
   );
 }
 
-export default HeaderBar
+export default HeaderBreadcrumb

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
-import HeaderBar from './HeaderBar'
+import HeaderBreadcrumb from './HeaderBreadcrumb'
 
 function ViewPhoto (props) {
   const photoID = props.match.params.pid
@@ -37,7 +37,7 @@ function ViewPhoto (props) {
       { isLoading && 'Loading...' }
       { photoDetails &&
         <div>
-          <HeaderBar photoDetails={ photoDetails } albumID={ albumID } albumTitle={ albumTitle } />          
+          <HeaderBreadcrumb photoDetails={ photoDetails } albumID={ albumID } albumTitle={ albumTitle } />          
 
           <div>
             <img src={photoDetails.baseUrl} />
