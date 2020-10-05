@@ -67,6 +67,12 @@ ul {
       transform: scale(1);
       @include box-shadow( 0px 0px 4px 2px rgba(0,0,0,0.33) );
     }
+    
+    /*
+    &:last-child {
+      flex-grow: 10;
+    }
+    */
 
     a {
       figure {
@@ -89,8 +95,8 @@ ul {
           background-color: white;
           color: black;
           text-align: center;          
-          /* width: 100%; */
-          max-width: 100%;
+          width: 100%;
+          /* max-width: 100%; */
           opacity: 0.9;
 
           h3 {
@@ -98,13 +104,13 @@ ul {
             padding: 0 1em;
             font-size: 0.9em;
             font-weight: normal;
-
+            font-family: monospace;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
 
             @include mobile {
-              font-size: 0.6em;
+              font-size: 0.7em;
             }
           }
         }
@@ -115,14 +121,13 @@ ul {
       /* max-height: 100%; */
       height: inherit; /* needed for tablet view to keep label on bottom of image */
       min-width: 100%;      
-      /* width: fit-content; */ /* needed to keep image ratio on tablet view */
-      /* width: 100%; needed for mobile to keep height same for each image */
+      /* width: fit-content; */ /* needed to keep image ratio on tablet view */      
       /* width: 99%; needed if adding padding for polaroid border */
       object-fit: cover;
       vertical-align: bottom;
 
       @include mobile {
-        width: 100%;
+        width: 100%; /* needed for mobile to keep height same for each image */
       }
 
       @include mobile-landscape {
@@ -131,18 +136,20 @@ ul {
       }
     }
 
-    &:last-child {
-      flex-grow: 10;
-    }
-
     @include tablet-wide-portrait {
-      flex: 1 1 50%;
+      flex: 1 1 45%;
       height: 25vh;   
     }
 
     @include mobile-landscape {
       flex: 1 1 30%;
       height: 40vh;
+    }
+  }
+
+  &.albums {
+    li {
+      border: 3px solid white;
     }
   }
 }

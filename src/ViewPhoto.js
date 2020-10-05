@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
+import HeaderBreadcrumb from './HeaderBreadcrumb'
 
 function ViewPhoto (props) {
-  const photoID = props.match.params.id
+  const photoID = props.match.params.pid
+  const albumID = props.match.params.aid
+  const albumTitle = props.match.params.atitle
+
   const service = useContext(PhotoServiceContext)
 
   const [photoDetails, setPhotoDetails] = useState(undefined)
@@ -33,7 +37,8 @@ function ViewPhoto (props) {
       { isLoading && 'Loading...' }
       { photoDetails &&
         <div>
-          <h2>Photo</h2>
+          <HeaderBreadcrumb photoDetails={ photoDetails } albumID={ albumID } albumTitle={ albumTitle } />          
+
           <div>
             <img src={photoDetails.baseUrl} />
           </div>
