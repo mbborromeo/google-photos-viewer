@@ -92,7 +92,7 @@ function App (props) {
             <Route path='/' exact component={AlbumsList} />
             <Route path='/album/:aid' component={ViewAlbum} />
             <Route path='/about' component={About} />
-            <Route path='/photo/:pid/:aid/:atitle' component={ViewPhoto} />
+            <Route path='/photo/:pid/:aid/:atitle/:pnum/:ptotal' component={ViewPhoto} />
           </div>
         </Router>
       </PhotoServiceContext.Provider>

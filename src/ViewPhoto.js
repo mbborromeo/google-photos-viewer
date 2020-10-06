@@ -7,6 +7,8 @@ function ViewPhoto (props) {
   const photoID = props.match.params.pid
   const albumID = props.match.params.aid
   const albumTitle = props.match.params.atitle
+  const photoNumber = props.match.params.pnum
+  const photosTotal = props.match.params.ptotal
 
   const service = useContext(PhotoServiceContext)
 
@@ -37,11 +39,19 @@ function ViewPhoto (props) {
       { isLoading && 'Loading...' }
       { photoDetails &&
         <div>
-          <HeaderBreadcrumb photoDetails={ photoDetails } albumID={ albumID } albumTitle={ albumTitle } />          
+          { console.log('ViewPhoto photoDetails', photoDetails) }
+          <HeaderBreadcrumb 
+            photoDetails={ photoDetails } 
+            albumID={ albumID } 
+            albumTitle={ albumTitle }             
+          />          
 
-          <div>
+          <figure>
             <img src={photoDetails.baseUrl} />
-          </div>
+            <figcaption>
+              { photoNumber } of { photosTotal }
+            </figcaption>
+          </figure>
         </div>
       }
 

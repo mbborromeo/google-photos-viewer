@@ -42,10 +42,17 @@ function ViewAlbum (props) {
           <HeaderBreadcrumb albumDetails={ albumDetails } />
           
           <ul>
-            { albumDetails.mediaItems.map( function (mediaItem){
+            { albumDetails.mediaItems.map( function (mediaItem, index){
               return (
                 <li key={mediaItem.id}>
-                  <Link to={'/photo/' + mediaItem.id + '/' + albumID + '/' + albumDetails.title }>
+                  <Link to={
+                      '/photo/' + mediaItem.id + 
+                      '/' + albumID + 
+                      '/' + albumDetails.title + 
+                      '/' + ( parseInt(index) + 1 ) + 
+                      '/' + albumDetails.mediaItemsCount 
+                    }
+                  >
                     <figure>
                       <img src={mediaItem.baseUrl} alt='' />
                     </figure>
