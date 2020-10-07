@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from './Modal';
-import './ImageModal.scss'
 
 // props.children renders child nodes within ImageModal 
 function ImageModal (props) {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-import './ViewAlbum.scss'
 import { Link } from 'react-router-dom'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
 import PhotoServiceContext from './PhotoServiceContext'

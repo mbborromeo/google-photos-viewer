@@ -1,0 +1,46 @@
+/* Mixin for vendor prefixes: https://www.w3schools.com/sass/sass_mixin_include.asp
+   Box-shadow resource: https://www.cssmatic.com/box-shadow
+*/
+@mixin box-shadow( $property ) {
+  -webkit-box-shadow: $property;
+  -moz-box-shadow: $property;
+  -ms-transform: $property;
+  box-shadow: $property;
+}
+
+/* Used by responsive layout */
+@mixin mobile {
+  @media (max-width: $mobile-max-width + 'px') {
+    @content; // inserts content from where this is called     
+  }
+}
+
+@mixin mobile-landscape {
+  @media (max-width: $mobile-max-width + 'px') and (orientation: landscape) {
+    @content; // inserts content from where this is called     
+  }
+}
+
+@mixin mobile-portrait {
+  @media (max-width: $mobile-max-width + 'px') and (orientation: portrait) {
+    @content; // inserts content from where this is called     
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet-width + 'px') {
+    @content; // inserts content from where this is called     
+  }
+}
+
+@mixin tablet-landscape {
+  @media (max-width: $tablet-width + 'px') and (orientation: landscape) {
+    @content; // inserts content from where this is called     
+  }
+}
+
+@mixin tablet-wide-portrait {
+  @media (max-width: $tablet-width + 'px') and (orientation: portrait) {
+    @content; // inserts content from where this is called     
+  }
+}
