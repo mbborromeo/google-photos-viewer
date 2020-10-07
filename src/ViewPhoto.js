@@ -3,12 +3,11 @@ import PhotoServiceContext from './PhotoServiceContext'
 
 function ViewPhoto (props) {
   const photoID = props.photoID; //props.match.params.pid
-  const photoNumber = props.photoNumber //props.match.params.pnum
-  const photosTotal = props.photosTotal //props.match.params.ptotal
+  const photoNumber = props.photoNumber
+  const photosTotal = props.photosTotal
   console.log('ViewPhoto -', photoID, photoNumber, photosTotal)
 
   const service = useContext(PhotoServiceContext)
-
   const [photoDetails, setPhotoDetails] = useState(undefined)
   const [isLoading, setIsLoading] = useState(true)
 

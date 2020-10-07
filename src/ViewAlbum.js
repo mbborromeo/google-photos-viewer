@@ -20,7 +20,6 @@ function ViewAlbum (props) {
   const [selectedPhotoID, setSelectedPhotoID] = useState(undefined)
   const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined)
 
-  /* Modal resource: https://www.thomasmaximini.com/building-fullscreen-overlays-with-react-16-portals */
   const handleClick = (e, pid=undefined, pnumber=undefined) => {
     e.preventDefault(); // cancel default behaviour of opening a link
 
@@ -33,6 +32,7 @@ function ViewAlbum (props) {
     }
   };
 
+  /* Modal resource: https://www.thomasmaximini.com/building-fullscreen-overlays-with-react-16-portals */
   const renderModal = () => {
     return (
       <ImageModal handleClose={ handleClick } shown={ shown }>
