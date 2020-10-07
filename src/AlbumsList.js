@@ -17,7 +17,7 @@ function AlbumsList () {
       setIsLoading(false)
     })
   },
-  []
+  [service]
   )
 
   const newAlbums = albums.map( function (obj){
@@ -25,7 +25,7 @@ function AlbumsList () {
       <li key={obj.id}>
         <Link to={'/album/' + obj.id}>
           <figure>
-            <img src={obj.coverPhotoBaseUrl} />            
+            <img src={obj.coverPhotoBaseUrl} alt="" />            
             <figcaption>
               <h3>
                 { obj.title }
@@ -41,13 +41,17 @@ function AlbumsList () {
   return (
     <div>
       { isLoading && 'Loading...' }
-      <div>
-        <HeaderBreadcrumb />
-        
-        <ul className="albums">
-          { newAlbums }
-        </ul>
-      </div>
+      { albums.length > 0 &&
+        <div>
+          { console.log('AlbumsList albums', albums) }
+
+          <HeaderBreadcrumb />
+          
+          <ul className="albums">
+            { newAlbums }
+          </ul>
+        </div>
+      }
 
       <hr />
       <Link to='/'>Back to Albums List</Link>

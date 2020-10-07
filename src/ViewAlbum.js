@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
 import PhotoServiceContext from './PhotoServiceContext'
 import HeaderBreadcrumb from './HeaderBreadcrumb'
+import ViewPhoto from './ViewPhoto'
+import ImageModal from './ImageModal'
 
 function ViewAlbum (props) {
+  console.log('ViewAlbum props', props)
   const albumID = props.match.params.aid
 
   // const service = new DummyGooglePhotosService();
@@ -13,6 +16,34 @@ function ViewAlbum (props) {
 
   const [albumDetails, setAlbumDetails] = useState(undefined)
   const [isLoading, setIsLoading] = useState(true)
+  const [shown, setShown] = useState(false)
+  const [selectedPhotoID, setSelectedPhotoID] = useState(undefined)
+  const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined)
+
+  const handleClick = (e, pid=undefined, pnumber=undefined) => {
+    e.preventDefault(); // cancel default behaviour of opening a link
+
+    if( shown ){
+      setShown( false )
+    } else {
+      setSelectedPhotoID( pid )
+      setSelectedPhotoNumber( parseInt(pnumber) + 1 )
+      setShown( true )
+    }
+  };
+
+  /* Modal resource: https://www.thomasmaximini.com/building-fullscreen-overlays-with-react-16-portals */
+  const renderModal = () => {
+    return (
+      <ImageModal handleClose={ handleClick } shown={ shown }>
+        <ViewPhoto 
+          photoID={ selectedPhotoID } 
+          photoNumber={ selectedPhotoNumber } 
+          photosTotal={ albumDetails.mediaItemsCount } 
+        />
+      </ImageModal>
+    );
+  }
 
   useEffect(
     function () {
@@ -22,41 +53,42 @@ function ViewAlbum (props) {
         setIsLoading(false)
       })
     },
-    [props.match] // keep watching this for changes
+    [props.match, service, albumID] // keep watching this for changes
   )
-
-  // If the service is finished loading the album, but the album doesnt exist
-  if (!isLoading && !albumDetails) { // isLoaded && !albumDetails
-    return (
-      <div>
-        <h2>Album not found</h2>
-      </div>
-    );
-  }
 
   return (
     <div>
-      { isLoading && 'Loading...' }
-      { albumDetails &&
+      { isLoading && 
+        <span>
+          'Loading...'
+        </span>
+      }
+      { !isLoading && albumDetails &&
         <div>
-          { /* console.log('ViewAlbum albumDetails', albumDetails) */ }
           <HeaderBreadcrumb albumDetails={ albumDetails } />
           
           <ul>
-            { albumDetails.mediaItems.map( function (mediaItem){
+            { albumDetails.mediaItems.map( function (mediaItem, itemIndex){
               return (
                 <li key={mediaItem.id}>
-                  <Link to={'/photo/' + mediaItem.id + '/' + albumID + '/' + albumDetails.title }>
+                  <a href="#" onClick={ (e) => {handleClick(e, mediaItem.id, itemIndex)} } >{/* onClick={ (e) => {renderModal(mediaItem.id, itemIndex, e)} } */}
                     <figure>
                       <img src={mediaItem.baseUrl} alt='' />
-                    </figure>
-                  </Link>
+                    </figure>                  
+                  </a>
                 </li>
               );
             })}
           </ul>
+
+          { shown &&
+            renderModal() 
+          }
         </div>
       }
+      { !isLoading && !albumDetails &&
+        <span>Album not found</span>
+      }      
 
       <hr />
       <Link to='/'>Back to Albums List</Link>
