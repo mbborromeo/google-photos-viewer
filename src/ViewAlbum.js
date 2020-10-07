@@ -22,9 +22,12 @@ function ViewAlbum (props) {
 
   const handleClick = (e, pid=undefined, pnumber=undefined) => {
     e.preventDefault(); // cancel default behaviour of opening a link
+    const targetClassName = e.target.className; // .tagName.toLowerCase()
 
     if( shown ){
-      setShown( false )
+      if( targetClassName==="inner" || targetClassName==="wrapper" ){
+        setShown( false )
+      }
     } else {
       setSelectedPhotoID( pid )
       setSelectedPhotoNumber( parseInt(pnumber) + 1 )
