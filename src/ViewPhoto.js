@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import PhotoServiceContext from './PhotoServiceContext'
+import './ViewPhoto.scss'
 
 function ViewPhoto (props) {
   const photoID = props.photoID; //props.match.params.pid
