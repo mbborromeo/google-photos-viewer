@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/google-photos-viewer/static/css/main.9669b08f.chunk.css",
-    "main.js": "/google-photos-viewer/static/js/main.a3f1a148.chunk.js",
-    "main.js.map": "/google-photos-viewer/static/js/main.a3f1a148.chunk.js.map",
+    "main.css": "/google-photos-viewer/static/css/main.c50c3dee.chunk.css",
+    "main.js": "/google-photos-viewer/static/js/main.10083cd8.chunk.js",
+    "main.js.map": "/google-photos-viewer/static/js/main.10083cd8.chunk.js.map",
     "runtime~main.js": "/google-photos-viewer/static/js/runtime~main.e35f5dcb.js",
     "runtime~main.js.map": "/google-photos-viewer/static/js/runtime~main.e35f5dcb.js.map",
-    "static/js/2.1379300f.chunk.js": "/google-photos-viewer/static/js/2.1379300f.chunk.js",
-    "static/js/2.1379300f.chunk.js.map": "/google-photos-viewer/static/js/2.1379300f.chunk.js.map",
+    "static/js/2.5e87a522.chunk.js": "/google-photos-viewer/static/js/2.5e87a522.chunk.js",
+    "static/js/2.5e87a522.chunk.js.map": "/google-photos-viewer/static/js/2.5e87a522.chunk.js.map",
     "index.html": "/google-photos-viewer/index.html",
-    "precache-manifest.cabb74daa9f27401b8e5563d712365b9.js": "/google-photos-viewer/precache-manifest.cabb74daa9f27401b8e5563d712365b9.js",
+    "precache-manifest.1edfcbc7aaf6367cfd67ed977a581ecf.js": "/google-photos-viewer/precache-manifest.1edfcbc7aaf6367cfd67ed977a581ecf.js",
     "service-worker.js": "/google-photos-viewer/service-worker.js",
-    "static/css/main.9669b08f.chunk.css.map": "/google-photos-viewer/static/css/main.9669b08f.chunk.css.map"
+    "static/css/main.c50c3dee.chunk.css.map": "/google-photos-viewer/static/css/main.c50c3dee.chunk.css.map"
   }
 }
