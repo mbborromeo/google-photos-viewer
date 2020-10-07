@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
-import HeaderBreadcrumb from './HeaderBreadcrumb'
 
 function ViewPhoto (props) {
-  const photoID = props.match.params.pid
-  const albumID = props.match.params.aid
-  const albumTitle = props.match.params.atitle
-  const photoNumber = props.match.params.pnum
-  const photosTotal = props.match.params.ptotal
+  const photoID = props.photoID; //props.match.params.pid
+  const photoNumber = props.photoNumber //props.match.params.pnum
+  const photosTotal = props.photosTotal //props.match.params.ptotal
+  console.log('ViewPhoto -', photoID, photoNumber, photosTotal)
 
   const service = useContext(PhotoServiceContext)
 
@@ -23,40 +20,33 @@ function ViewPhoto (props) {
         setIsLoading(false)
       })
     },
-    [props.match] // keep watching this for changes
+    [props.match, service, photoID] // keep watching this for changes
   )
-
-  if (!isLoading && !photoDetails) {
-    return (
-      <div>
-        <h2>Photo not found</h2>
-      </div>
-    );
-  }
 
   return (
     <div>
-      { isLoading && 'Loading...' }
-      { photoDetails &&
-        <div>
-          { console.log('ViewPhoto photoDetails', photoDetails) }
-          <HeaderBreadcrumb 
-            photoDetails={ photoDetails } 
-            albumID={ albumID } 
-            albumTitle={ albumTitle }             
-          />          
-
-          <figure>
-            <img src={photoDetails.baseUrl} />
-            <figcaption>
-              { photoNumber } of { photosTotal }
-            </figcaption>
-          </figure>
-        </div>
+      { isLoading && 
+        <figure>
+          <figcaption>
+            'Loading...' 
+          </figcaption>
+        </figure>      
       }
-
-      <hr />
-      <Link to='/'>Back to Albums List</Link>
+      { !isLoading && photoDetails &&
+        <figure>
+          <img src={photoDetails.baseUrl} alt="" />            
+          <figcaption>
+            { photoNumber } of { photosTotal }
+          </figcaption>
+        </figure>
+      }
+      { !isLoading && !photoDetails &&
+        <figure>
+          <figcaption>
+            Photo not found
+          </figcaption>
+        </figure>
+      }
     </div>
   );
 }

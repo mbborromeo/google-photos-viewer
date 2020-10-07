@@ -3,7 +3,6 @@ import React, { useEffect, useCallback, useState } from 'react'
 import './App.scss'
 import AlbumsList from './AlbumsList'
 import ViewAlbum from './ViewAlbum'
-import ViewPhoto from './ViewPhoto'
 import About from './About'
 import { HashRouter as Router, Route } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
@@ -57,7 +56,7 @@ function App (props) {
         100
       )
     },
-    []
+    [props.gapiID]
   )
 
   const onSignOut = useCallback(
@@ -88,12 +87,9 @@ function App (props) {
         <Router>
           <button onClick={onSignOut}>Sign Out</button>
 
-          <div>
-            <Route path='/' exact component={AlbumsList} />
-            <Route path='/album/:aid' component={ViewAlbum} />
-            <Route path='/about' component={About} />
-            <Route path='/photo/:pid/:aid/:atitle/:pnum/:ptotal' component={ViewPhoto} />
-          </div>
+          <Route path='/' exact component={AlbumsList} />
+          <Route path='/album/:aid' component={ViewAlbum} />
+          <Route path='/about' component={About} />
         </Router>
       </PhotoServiceContext.Provider>
     </div>

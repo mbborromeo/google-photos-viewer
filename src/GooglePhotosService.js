@@ -24,7 +24,6 @@ class GooglePhotosService {
         return response.result
       })
       .then((album) => {
-        console.log('loadAlbumDetail - getting media items for', album)
         return this.gapiClient
           .photoslibrary
           .mediaItems
