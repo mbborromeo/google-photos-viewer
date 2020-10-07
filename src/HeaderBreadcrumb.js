@@ -17,6 +17,7 @@ function HeaderBreadcrumb (props) {
             </span>
           }
           {
+          /*
             props.photoDetails && props.albumID && props.albumTitle && 
             <span>
                &nbsp;&raquo;&nbsp;
@@ -24,12 +25,15 @@ function HeaderBreadcrumb (props) {
                  { props.albumTitle }
                </Link>
             </span>
+          */
           }
           {
+          /*
             props.photoDetails && 
             <span>
                &nbsp;&raquo; { (props.photoDetails.filename).split(".")[0] }
             </span>
+          */
           }          
         </h2>
     </div>
