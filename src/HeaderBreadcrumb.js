@@ -1,5 +1,4 @@
 import React from 'react'
-import './HeaderBreadcrumb.scss'
 import { Link } from 'react-router-dom'
 
 function HeaderBreadcrumb (props) {

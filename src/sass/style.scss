@@ -1,0 +1,15 @@
+/**
+ * Define SASS Partials & Modules:
+ * Partial files will be compiled into this one file.
+ * Modules are not outputted as CSS, but are available to use by this file and partials below.
+ */
+@import 'modules/variables'; 
+@import 'modules/mixins';
+
+/* CSS for pages in src folder */
+@import 'index.scss';
+@import 'App.scss';
+@import 'HeaderBreadcrumb.scss';
+@import 'AlbumsList.scss';
+@import 'ViewPhoto.scss';
+@import 'ImageModal.scss';

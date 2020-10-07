@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-import './AlbumsList.scss'
 import { Link } from 'react-router-dom'
 import PhotoServiceContext from './PhotoServiceContext'
 import HeaderBreadcrumb from './HeaderBreadcrumb'

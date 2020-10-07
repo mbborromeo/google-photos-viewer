@@ -1,6 +1,5 @@
 /* global gapi */
 import React, { useEffect, useCallback, useState } from 'react'
-import './App.scss'
 import AlbumsList from './AlbumsList'
 import ViewAlbum from './ViewAlbum'
 import About from './About'
