@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import { Link } from 'react-router-dom'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
 import PhotoServiceContext from './PhotoServiceContext'
@@ -20,6 +20,13 @@ function ViewAlbum (props) {
   const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined)
   const [currentPageToken, setCurrentPageToken] = useState(undefined)
   const [previousPageToken, setPreviousPageToken] = useState(undefined)
+
+  const previousStatePreviousPageToken = useRef(); // useRef has a 'current' property
+  // useEffect( () => {
+  //     previousStatePreviousPageToken.current = previousPageToken;
+  //   },
+  //   [ previousPageToken ]
+  // );
 
   const handleClickShowOrHide = (e, pid=undefined, pnumber=undefined) => {
     e.preventDefault(); // cancel default behaviour of opening a link
@@ -49,30 +56,32 @@ function ViewAlbum (props) {
     );
   }
 
-  useEffect(
-    function () {
+  useEffect( () => {
       // TO DO: add case for when nextPageToken has a value...
       const promise = service.loadAlbumDetail(albumID, currentPageToken)
       promise.then(function (arg) {
-        setAlbumDetails(arg)
+        setAlbumDetails(arg)        
         setIsLoading(false)
       })
     },
     [props.match, service, albumID, currentPageToken] // keep watching this for changes
-  )
+  );
 
   const handleClickNext = (e) => {
     e.preventDefault();
     console.log('handleClickNext albumDetails.nextPageToken', albumDetails.result.nextPageToken)
+    previousStatePreviousPageToken.current = previousPageToken;
     setPreviousPageToken( currentPageToken )
     setCurrentPageToken( albumDetails.result.nextPageToken )
   }
 
-  const handleClickPrevious = (e, prevState) => {
+  const handleClickPrevious = (e) => {
     e.preventDefault();
     console.log('handleClickPrevious previousPageToken', previousPageToken)
-    setCurrentPageToken( previousPageToken )
-    setPreviousPageToken( prevState.previousPageToken )
+    setCurrentPageToken( previousPageToken )       
+    setPreviousPageToken( previousStatePreviousPageToken.current )
+    // previousStatePreviousPageToken.current = ? need to look up from history, so may not need to use useRef
+    
   }
 
   return (
