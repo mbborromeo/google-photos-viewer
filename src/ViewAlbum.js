@@ -18,6 +18,7 @@ function ViewAlbum (props) {
   const [shown, setShown] = useState(false)
   const [selectedPhotoID, setSelectedPhotoID] = useState(undefined)
   const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined)
+  const [currentPageNumber, setCurrentPageNumber] = useState(1)
   const [currentPageToken, setCurrentPageToken] = useState(undefined)
   const [previousPageToken, setPreviousPageToken] = useState(undefined)
 
@@ -73,15 +74,17 @@ function ViewAlbum (props) {
     previousStatePreviousPageToken.current = previousPageToken;
     setPreviousPageToken( currentPageToken )
     setCurrentPageToken( albumDetails.result.nextPageToken )
+    setCurrentPageNumber( currentPageNumber + 1 )
   }
 
   const handleClickPrevious = (e) => {
     e.preventDefault();
     console.log('handleClickPrevious previousPageToken', previousPageToken)
-    setCurrentPageToken( previousPageToken )       
-    setPreviousPageToken( previousStatePreviousPageToken.current )
-    // previousStatePreviousPageToken.current = ? need to look up from history, so may not need to use useRef
-    
+    setCurrentPageToken( previousPageToken )
+    // need to look up from history, so may not need to use useRef  
+    // setPreviousPageToken( previousStatePreviousPageToken.current )
+    // previousStatePreviousPageToken.current = ? 
+    setCurrentPageNumber( currentPageNumber - 1 )
   }
 
   return (
@@ -113,17 +116,23 @@ function ViewAlbum (props) {
             renderModal() 
           }
           
-          { currentPageToken &&
-            <span>
-              <a href="#" onClick={ (e) => { handleClickPrevious(e) } }>Previous page</a> | 
-            </span>
-          }
+          <div id="pagination">
+            { currentPageToken &&
+              <span>
+                <a href="#" onClick={ (e) => { handleClickPrevious(e) } }>Prev</a>&nbsp;
+              </span>
+            }
 
-          { albumDetails.result.nextPageToken &&
             <span>
-              &nbsp;<a href="#" onClick={ (e) => { handleClickNext(e) } }>Next page</a>
+              { currentPageNumber } of { Math.ceil( albumDetails.mediaItemsCount / 25 ) }
             </span>
-          }
+
+            { albumDetails.result.nextPageToken &&
+              <span>
+                &nbsp;<a href="#" onClick={ (e) => { handleClickNext(e) } }>Next</a>
+              </span>
+            }
+          </div>
         </div>
       }
       { !isLoading && !albumDetails &&
