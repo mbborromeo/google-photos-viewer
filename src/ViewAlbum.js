@@ -7,7 +7,7 @@ import ViewPhoto from './ViewPhoto'
 import ImageModal from './ImageModal'
 
 function ViewAlbum (props) {
-  console.log('ViewAlbum props', props)
+  // console.log('ViewAlbum props', props)
   const albumID = props.match.params.aid
 
   // const service = new DummyGooglePhotosService();
@@ -18,8 +18,10 @@ function ViewAlbum (props) {
   const [shown, setShown] = useState(false)
   const [selectedPhotoID, setSelectedPhotoID] = useState(undefined)
   const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined)
+  const [currentPageToken, setCurrentPageToken] = useState(undefined)
+  const [previousPageToken, setPreviousPageToken] = useState(undefined)
 
-  const handleClick = (e, pid=undefined, pnumber=undefined) => {
+  const handleClickShowOrHide = (e, pid=undefined, pnumber=undefined) => {
     e.preventDefault(); // cancel default behaviour of opening a link
     const targetClassName = e.target.className; // .tagName.toLowerCase()
 
@@ -37,7 +39,7 @@ function ViewAlbum (props) {
   /* Modal resource: https://www.thomasmaximini.com/building-fullscreen-overlays-with-react-16-portals */
   const renderModal = () => {
     return (
-      <ImageModal handleClose={ handleClick } shown={ shown }>
+      <ImageModal handleClose={ handleClickShowOrHide } shown={ shown }>
         <ViewPhoto 
           photoID={ selectedPhotoID } 
           photoNumber={ selectedPhotoNumber } 
@@ -49,14 +51,29 @@ function ViewAlbum (props) {
 
   useEffect(
     function () {
-      const promise = service.loadAlbumDetail(albumID)
+      // TO DO: add case for when nextPageToken has a value...
+      const promise = service.loadAlbumDetail(albumID, currentPageToken)
       promise.then(function (arg) {
         setAlbumDetails(arg)
         setIsLoading(false)
       })
     },
-    [props.match, service, albumID] // keep watching this for changes
+    [props.match, service, albumID, currentPageToken] // keep watching this for changes
   )
+
+  const handleClickNext = (e) => {
+    e.preventDefault();
+    console.log('handleClickNext albumDetails.nextPageToken', albumDetails.result.nextPageToken)
+    setPreviousPageToken( currentPageToken )
+    setCurrentPageToken( albumDetails.result.nextPageToken )
+  }
+
+  const handleClickPrevious = (e, prevState) => {
+    e.preventDefault();
+    console.log('handleClickPrevious previousPageToken', previousPageToken)
+    setCurrentPageToken( previousPageToken )
+    setPreviousPageToken( prevState.previousPageToken )
+  }
 
   return (
     <div>
@@ -70,10 +87,10 @@ function ViewAlbum (props) {
           <HeaderBreadcrumb albumDetails={ albumDetails } />
           
           <ul>
-            { albumDetails.mediaItems.map( function (mediaItem, itemIndex){
+            { albumDetails.result.mediaItems.map( function (mediaItem, itemIndex){
               return (
                 <li key={mediaItem.id}>
-                  <a href="#" onClick={ (e) => {handleClick(e, mediaItem.id, itemIndex)} } >{/* onClick={ (e) => {renderModal(mediaItem.id, itemIndex, e)} } */}
+                  <a href="#" onClick={ (e) => {handleClickShowOrHide(e, mediaItem.id, itemIndex)} } >
                     <figure>
                       <img src={mediaItem.baseUrl} alt='' />
                     </figure>                  
@@ -85,6 +102,18 @@ function ViewAlbum (props) {
 
           { shown &&
             renderModal() 
+          }
+          
+          { currentPageToken &&
+            <span>
+              <a href="#" onClick={ (e) => { handleClickPrevious(e) } }>Previous page</a> | 
+            </span>
+          }
+
+          { albumDetails.result.nextPageToken &&
+            <span>
+              &nbsp;<a href="#" onClick={ (e) => { handleClickNext(e) } }>Next page</a>
+            </span>
           }
         </div>
       }

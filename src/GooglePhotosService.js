@@ -15,7 +15,7 @@ class GooglePhotosService {
       })
   }
 
-  loadAlbumDetail (id) {
+  loadAlbumDetail (id, token) {
     return this.gapiClient
       .photoslibrary
       .albums
@@ -24,16 +24,18 @@ class GooglePhotosService {
         return response.result
       })
       .then((album) => {
+        console.log('loadAlbumDetail album', album)
         return this.gapiClient
           .photoslibrary
           .mediaItems
-          .search({ albumId: id })
+          .search({ albumId: id, pageToken: token })
           .then(function (response) {
-            const mediaItems = response.result.mediaItems
-
+            console.log('loadAlbumDetail then response', response)
+            
+            // join album data with mediaItems corresponding to album
             return {
               ...album,
-              mediaItems: mediaItems
+              result: response.result
             }
           })
       })
