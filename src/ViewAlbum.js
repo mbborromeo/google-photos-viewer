@@ -20,15 +20,7 @@ function ViewAlbum (props) {
   const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined)
   const [currentPageNumber, setCurrentPageNumber] = useState(1)
   const [currentPageToken, setCurrentPageToken] = useState(undefined)
-  //const [previousPageToken, setPreviousPageToken] = useState(undefined)
-  const [previousPageTokenArray, setPreviousPageTokenArray] = useState( [ undefined ] );
-
-  //const previousStatePreviousPageToken = useRef(); // useRef has a 'current' property
-  // useEffect( () => {
-  //     previousStatePreviousPageToken.current = previousPageToken;
-  //   },
-  //   [ previousPageToken ]
-  // );
+  const [previousPageTokenArray, setPreviousPageTokenArray] = useState( [ undefined ] )
 
   const handleClickShowOrHide = (e, pid=undefined, pnumber=undefined) => {
     e.preventDefault(); // cancel default behaviour of opening a link
@@ -71,10 +63,6 @@ function ViewAlbum (props) {
 
   const handleClickNext = (e) => {
     e.preventDefault();
-    console.log('handleClickNext albumDetails.nextPageToken', albumDetails.result.nextPageToken)
-    //previousStatePreviousPageToken.current = previousPageToken;
-    //setPreviousPageToken( currentPageToken )
-    //previousPageTokenArray.push( currentPageToken );
     setPreviousPageTokenArray( [...previousPageTokenArray, currentPageToken] );
     console.log('previousPageTokenArray', previousPageTokenArray)
     setCurrentPageToken( albumDetails.result.nextPageToken )
@@ -82,14 +70,10 @@ function ViewAlbum (props) {
   }
 
   const handleClickPrevious = (e) => {
-    e.preventDefault();    
-    //setCurrentPageToken( previousPageToken )
+    e.preventDefault();
+    console.log('previousPageTokenArray', previousPageTokenArray)
     console.log('prev page token', previousPageTokenArray[ currentPageNumber - 1 ])
     setCurrentPageToken( previousPageTokenArray[ currentPageNumber - 1 ] );
-
-    // need to look up from history, so may not need to use useRef  
-    // setPreviousPageToken( previousStatePreviousPageToken.current )
-    // previousStatePreviousPageToken.current = ? 
     setCurrentPageNumber( currentPageNumber - 1 )
   }
 
