@@ -42,7 +42,7 @@ function AlbumsList () {
       { isLoading && 'Loading...' }
       { albums.length > 0 &&
         <div>
-          { console.log('AlbumsList albums', albums) }
+          { /* console.log('AlbumsList albums', albums) */ }
 
           <HeaderBreadcrumb />
           

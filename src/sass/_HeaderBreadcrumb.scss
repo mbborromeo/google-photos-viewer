@@ -1,6 +1,10 @@
 .header {
   h2 {
     font-size: 1.2em;
+    padding: 0 8px;
 
+    @include mobile {
+      font-size: 0.8em;      
+    }
   }
 }
