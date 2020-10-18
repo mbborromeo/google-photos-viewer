@@ -61,7 +61,7 @@ function ViewAlbum (props) {
 
   const handleClickNext = (e) => {
     e.preventDefault();
-    // check if array element at NEXT page number exists
+    // check if previous page token of current page exists
     if( typeof previousPageTokenArray[ currentPageNumber ] === 'undefined' ){
       setPreviousPageTokenArray( [...previousPageTokenArray, currentPageToken] );
     }
