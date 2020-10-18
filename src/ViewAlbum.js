@@ -53,14 +53,7 @@ function ViewAlbum (props) {
       const promise = service.loadAlbumDetail(albumID, currentPageToken)
       promise.then(function (arg) {
         setAlbumDetails(arg)        
-        setIsLoading(false)
-        console.log('currentPageNumber', currentPageNumber)
-        if(currentPageToken){
-          console.log('currentPageToken true', currentPageToken)
-        } else {
-          console.log('currentPageToken false', currentPageToken)
-        }
-        console.log('previousPageTokenArray', previousPageTokenArray)
+        setIsLoading(false)        
       })
     },
     [props.match, service, albumID, currentPageToken] // keep watching this for changes
@@ -68,13 +61,7 @@ function ViewAlbum (props) {
 
   const handleClickNext = (e) => {
     e.preventDefault();
-    console.log('clicked NEXT')
-    // setPreviousPageTokenArray( [...previousPageTokenArray, currentPageToken] );
     // check if array element at NEXT page number exists
-    console.log('previous page token for next page - number', currentPageNumber, 
-    'TYPE IS', typeof previousPageTokenArray[ currentPageNumber ] )
-    // if( !previousPageTokenArray[ currentPageNumber + 1 ] ){    
-    /* NOT WORKING when next, prev, next */
     if( typeof previousPageTokenArray[ currentPageNumber ] === 'undefined' ){
       setPreviousPageTokenArray( [...previousPageTokenArray, currentPageToken] );
     }
@@ -84,9 +71,6 @@ function ViewAlbum (props) {
 
   const handleClickPrevious = (e) => {
     e.preventDefault();
-    console.log('clicked PREVIOUS')
-    console.log('previous page token page number', currentPageNumber, 
-    'TYPE IS', typeof previousPageTokenArray[ currentPageNumber - 1 ] )
     setCurrentPageToken( previousPageTokenArray[ currentPageNumber - 1 ] );
     setCurrentPageNumber( currentPageNumber - 1 )
   }
