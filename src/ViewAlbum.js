@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 // import DummyGooglePhotosService from './DummyGooglePhotosService';
 import PhotoServiceContext from './PhotoServiceContext'
@@ -7,7 +7,6 @@ import ViewPhoto from './ViewPhoto'
 import ImageModal from './ImageModal'
 
 function ViewAlbum (props) {
-  // console.log('ViewAlbum props', props)
   const albumID = props.match.params.aid
 
   // const service = new DummyGooglePhotosService();
@@ -51,11 +50,10 @@ function ViewAlbum (props) {
   }
 
   useEffect( () => {
-      // TO DO: add case for when nextPageToken has a value...
       const promise = service.loadAlbumDetail(albumID, currentPageToken)
       promise.then(function (arg) {
         setAlbumDetails(arg)        
-        setIsLoading(false)
+        setIsLoading(false)        
       })
     },
     [props.match, service, albumID, currentPageToken] // keep watching this for changes
@@ -63,16 +61,16 @@ function ViewAlbum (props) {
 
   const handleClickNext = (e) => {
     e.preventDefault();
-    setPreviousPageTokenArray( [...previousPageTokenArray, currentPageToken] );
-    console.log('previousPageTokenArray', previousPageTokenArray)
+    // check if array element at NEXT page number exists
+    if( typeof previousPageTokenArray[ currentPageNumber ] === 'undefined' ){
+      setPreviousPageTokenArray( [...previousPageTokenArray, currentPageToken] );
+    }
     setCurrentPageToken( albumDetails.result.nextPageToken )
     setCurrentPageNumber( currentPageNumber + 1 )
   }
 
   const handleClickPrevious = (e) => {
     e.preventDefault();
-    console.log('previousPageTokenArray', previousPageTokenArray)
-    console.log('prev page token', previousPageTokenArray[ currentPageNumber - 1 ])
     setCurrentPageToken( previousPageTokenArray[ currentPageNumber - 1 ] );
     setCurrentPageNumber( currentPageNumber - 1 )
   }
