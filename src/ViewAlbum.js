@@ -50,13 +50,13 @@ function ViewAlbum (props) {
   }
 
   useEffect( () => {
-      const promise = service.loadAlbumDetail(albumID, currentPageToken)
-      promise.then(function (arg) {
-        setAlbumDetails(arg)        
-        setIsLoading(false)        
-      })
-    },
-    [props.match, service, albumID, currentPageToken] // keep watching this for changes
+    const promise = service.loadAlbumDetail(albumID, currentPageToken)
+    promise.then(function (arg) {
+      setAlbumDetails(arg)        
+      setIsLoading(false)        
+    })
+  },
+  [props.match, service, albumID, currentPageToken] // keep watching this for changes
   );
 
   const handleClickNext = (e) => {

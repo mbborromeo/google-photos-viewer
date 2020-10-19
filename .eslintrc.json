@@ -1,0 +1,24 @@
+{
+  "extends": "react-app", // "airbnb"
+    "plugins": [
+      "prettier",      
+      "react",
+      "react-hooks" //"react-hooks/recommended"
+    ],
+    "parser": "babel-eslint",
+    "env": {
+      "jest": true,
+      "browser": true
+    },
+    "rules": {
+      "react/jsx-filename-extension": "off",
+      "react/prop-types": "off",
+      "comma-dangle": "off",
+      "indent": ["error", 2],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    },
+    "globals": {
+      "fetch": false
+    }
+}
