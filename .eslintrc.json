@@ -1,5 +1,5 @@
 {
-  "extends": "react-app", // "airbnb"
+  "extends": "react-app", // "airbnb" // ["prettier"]
     "plugins": [
       "prettier",      
       "react",
@@ -16,7 +16,8 @@
       "comma-dangle": "off",
       "indent": ["error", 2],
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn"
+      "react-hooks/exhaustive-deps": "warn",
+      "prettier/prettier": ["error"]
     },
     "globals": {
       "fetch": false
