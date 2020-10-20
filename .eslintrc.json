@@ -17,7 +17,8 @@
       "indent": ["error", 2],
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "prettier/prettier": ["error"]
+      "prettier/prettier": ["error"],
+      "no-irregular-whitespace": "off"
     },
     "globals": {
       "fetch": false

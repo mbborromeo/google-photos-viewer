@@ -7,23 +7,23 @@ import ReactDOM from 'react-dom';
 // in the DOM hierachy
 const modalRoot = document.getElementById('root');
 
-function Modal (props) {
+function Modal(props) {
   // constructor
   const el = document.createElement('div');
-  el.setAttribute("id", "modal")
+  el.setAttribute('id', 'modal');
 
   // Similar to componentDidMount and componentDidUpdate
-  useEffect( function (){
-    modalRoot.appendChild( el );
+  useEffect(function () {
+    modalRoot.appendChild(el);
 
     // Equivalent to componentWillUnmount
     // Specify how to clean up after this effect:
-    return function cleanup() {      
-      modalRoot.removeChild( el );
+    return function cleanup() {
+      modalRoot.removeChild(el);
     };
   });
 
-  return ReactDOM.createPortal( props.children, el);
+  return ReactDOM.createPortal(props.children, el);
 }
 
-export default Modal
+export default Modal;
