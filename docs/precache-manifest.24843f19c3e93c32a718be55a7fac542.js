@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1cf8feca14c44129492ca35536d4f851",
+    "revision": "c507a72fd45c1bb87b5864fb35e5cf19",
     "url": "/google-photos-viewer/index.html"
   },
   {
-    "revision": "c1b9e8b8f7599545c113",
+    "revision": "43ed667e1ea9bc5c790c",
     "url": "/google-photos-viewer/static/css/main.9a45daef.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/google-photos-viewer/static/js/2.79b7c8a2.chunk.js"
   },
   {
-    "revision": "c1b9e8b8f7599545c113",
-    "url": "/google-photos-viewer/static/js/main.ac1517c4.chunk.js"
+    "revision": "43ed667e1ea9bc5c790c",
+    "url": "/google-photos-viewer/static/js/main.fbabc743.chunk.js"
   },
   {
     "revision": "67a3c3f1844ba0c70bc4",
