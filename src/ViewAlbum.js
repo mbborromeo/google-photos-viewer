@@ -18,10 +18,12 @@ function ViewAlbum(props) {
   const [selectedPhotoID, setSelectedPhotoID] = useState(undefined);
   const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined);
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
-  const [currentPageToken, setCurrentPageToken] = useState(undefined);
-  const [previousPageTokenArray, setPreviousPageTokenArray] = useState([
-    undefined,
-  ]);
+  const [currentPageToken, setCurrentPageToken] = useState(undefined); // always initially undefined?
+  const [pageTokenArray, setPageTokenArray] = useState([]); // [undefined]
+
+  //console.log('ViewAlbum currentPageToken', currentPageToken)
+  console.log('ViewAlbum currentPageNumber', currentPageNumber)
+  console.log('ViewAlbum pageTokenArray', pageTokenArray)
 
   const handleClickShowOrHide = (e, pid = undefined, pnumber = undefined) => {
     e.preventDefault(); // cancel default behaviour of opening a link
@@ -55,7 +57,15 @@ function ViewAlbum(props) {
     () => {
       const promise = service.loadAlbumDetail(albumID, currentPageToken);
       promise.then(function (arg) {
+        console.log('useEffect arg.result.nextPageToken', arg.result.nextPageToken)
+        console.log('TYPE OF pageTokenArray element', typeof pageTokenArray[currentPageNumber - 1] )
         setAlbumDetails(arg);
+
+        // check if previous page token of current page exists
+        if( typeof pageTokenArray[currentPageNumber - 1] === 'undefined' ){
+          setPageTokenArray( [...pageTokenArray, currentPageToken] );
+        }
+        
         setIsLoading(false);
       });
     },
@@ -64,17 +74,13 @@ function ViewAlbum(props) {
 
   const handleClickNext = (e) => {
     e.preventDefault();
-    // check if previous page token of current page exists
-    if (typeof previousPageTokenArray[currentPageNumber] === 'undefined') {
-      setPreviousPageTokenArray([...previousPageTokenArray, currentPageToken]);
-    }
     setCurrentPageToken(albumDetails.result.nextPageToken);
     setCurrentPageNumber(currentPageNumber + 1);
   };
 
   const handleClickPrevious = (e) => {
     e.preventDefault();
-    setCurrentPageToken(previousPageTokenArray[currentPageNumber - 1]);
+    setCurrentPageToken(pageTokenArray[currentPageNumber - 2]); // -2 because want the previous page, and -1 is current.
     setCurrentPageNumber(currentPageNumber - 1);
   };
 
