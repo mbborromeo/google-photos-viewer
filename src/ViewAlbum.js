@@ -117,6 +117,7 @@ function ViewAlbum(props) {
                   onClick={(e) => {
                     handleClickPrevious(e);
                   }}
+                  className={ isLoading ? 'disable' : '' }
                 >
                   Prev
                 </a>
@@ -137,6 +138,7 @@ function ViewAlbum(props) {
                   onClick={(e) => {
                     handleClickNext(e);
                   }}
+                  className={ isLoading ? 'disable' : '' }
                 >
                   Next
                 </a>
