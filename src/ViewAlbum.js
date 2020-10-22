@@ -19,7 +19,7 @@ function ViewAlbum(props) {
   const [selectedPhotoNumber, setSelectedPhotoNumber] = useState(undefined);
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [currentPageToken, setCurrentPageToken] = useState(undefined); // always initially undefined?
-  const [pageTokenArray, setPageTokenArray] = useState([]); // [undefined]
+  const [pageTokenArray, setPageTokenArray] = useState([undefined]); // []
 
   //console.log('ViewAlbum currentPageToken', currentPageToken)
   console.log('ViewAlbum currentPageNumber', currentPageNumber)
@@ -59,11 +59,13 @@ function ViewAlbum(props) {
       promise.then(function (arg) {
         console.log('useEffect arg.result.nextPageToken', arg.result.nextPageToken)
         console.log('TYPE OF pageTokenArray element', typeof pageTokenArray[currentPageNumber - 1] )
+        console.log('pageTokenArray element', pageTokenArray[currentPageNumber - 1] )
         setAlbumDetails(arg);
 
         // check if previous page token of current page exists
-        if( typeof pageTokenArray[currentPageNumber - 1] === 'undefined' ){
-          setPageTokenArray( [...pageTokenArray, currentPageToken] );
+        if( typeof pageTokenArray[currentPageNumber - 1] === 'undefined' && currentPageToken ){
+          console.log('TYPEOF is undefined')
+          setPageTokenArray( [...pageTokenArray, currentPageToken] ); // adding to end of array, not by index
         }
         
         setIsLoading(false);
