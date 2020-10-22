@@ -21,10 +21,6 @@ function ViewAlbum(props) {
   const [currentPageToken, setCurrentPageToken] = useState(undefined); // always initially undefined?
   const [pageTokenArray, setPageTokenArray] = useState([undefined]); // []
 
-  //console.log('ViewAlbum currentPageToken', currentPageToken)
-  console.log('ViewAlbum currentPageNumber', currentPageNumber)
-  console.log('ViewAlbum pageTokenArray', pageTokenArray)
-
   const handleClickShowOrHide = (e, pid = undefined, pnumber = undefined) => {
     e.preventDefault(); // cancel default behaviour of opening a link
     const targetClassName = e.target.className; // .tagName.toLowerCase()
@@ -57,14 +53,10 @@ function ViewAlbum(props) {
     () => {
       const promise = service.loadAlbumDetail(albumID, currentPageToken);
       promise.then(function (arg) {
-        console.log('useEffect arg.result.nextPageToken', arg.result.nextPageToken)
-        console.log('TYPE OF pageTokenArray element', typeof pageTokenArray[currentPageNumber - 1] )
-        console.log('pageTokenArray element', pageTokenArray[currentPageNumber - 1] )
         setAlbumDetails(arg);
 
         // check if previous page token of current page exists
         if( typeof pageTokenArray[currentPageNumber - 1] === 'undefined' && currentPageToken ){
-          console.log('TYPEOF is undefined')
           setPageTokenArray( [...pageTokenArray, currentPageToken] ); // adding to end of array, not by index
         }
         
